@@ -1,0 +1,40 @@
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+  flex-shrink: 0;
+}
+
+.sm {
+  width: 28px;
+  height: 28px;
+  padding: 5px;
+}
+
+.md {
+  width: 36px;
+  height: 36px;
+  padding: 8px;
+}
+
+.lg {
+  width: 48px;
+  height: 48px;
+  padding: 10px;
+}
+
+.icon[data-path-type='stay-in-vibe'] {
+  color: var(--color-path-vibe);
+  background: rgba(30, 215, 96, 0.2);
+}
+
+.icon[data-path-type='discover-new'] {
+  color: var(--color-path-discover);
+  background: rgba(168, 85, 247, 0.2);
+}
+
+.icon[data-path-type='fit-moment'] {
+  color: var(--color-path-moment);
+  background: rgba(249, 115, 22, 0.2);
+}

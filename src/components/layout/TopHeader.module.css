@@ -1,0 +1,192 @@
+.header {
+  display: grid;
+  grid-template-columns: var(--sidebar-width) 1fr;
+  align-items: center;
+  height: 64px;
+  background: var(--color-bg-base);
+  flex-shrink: 0;
+}
+
+.headerWithQueue {
+  grid-template-columns: var(--sidebar-width) 1fr var(--queue-width);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: var(--space-6);
+  color: var(--color-text-primary);
+}
+
+.mainCol {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  height: 100%;
+}
+
+.queueCol {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: var(--space-4);
+  min-width: 0;
+}
+
+.homeBtn {
+  position: absolute;
+  left: var(--space-4);
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-full);
+  background: var(--color-bg-press);
+  color: var(--color-text-primary);
+  flex-shrink: 0;
+  transition: transform var(--transition-fast), background var(--transition-fast);
+}
+
+.homeBtn:hover {
+  transform: translateY(-50%) scale(1.04);
+  background: #333333;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  width: min(100%, 364px);
+  height: 48px;
+  padding: 0 var(--space-4);
+  border-radius: var(--radius-full);
+  background: var(--color-bg-press);
+  color: var(--color-text-secondary);
+  flex-shrink: 1;
+}
+
+.search:focus-within {
+  outline: 2px solid var(--color-text-primary);
+  outline-offset: 2px;
+  color: var(--color-text-primary);
+}
+
+.searchIcon {
+  display: flex;
+  flex-shrink: 0;
+  color: var(--color-text-primary);
+}
+
+.searchInput {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  background: transparent;
+  color: var(--color-text-primary);
+  font-size: var(--font-size-base);
+  font-family: inherit;
+}
+
+.searchInput::placeholder {
+  color: var(--color-text-secondary);
+}
+
+.searchInput:focus {
+  outline: none;
+}
+
+.searchDivider {
+  width: 1px;
+  height: 22px;
+  background: rgba(255, 255, 255, 0.25);
+  flex-shrink: 0;
+}
+
+.browseBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-primary);
+  flex-shrink: 0;
+  transition: transform var(--transition-fast);
+}
+
+.browseBtn:hover {
+  transform: scale(1.06);
+}
+
+.mainCol .actions {
+  position: absolute;
+  right: var(--space-4);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  flex-shrink: 0;
+}
+
+.installBtn {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--font-size-base);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  border-radius: var(--radius-full);
+  transition: transform var(--transition-fast), background var(--transition-fast);
+}
+
+.installBtn:hover {
+  transform: scale(1.04);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.iconBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  color: var(--color-text-secondary);
+  border-radius: var(--radius-full);
+  transition: color var(--transition-fast), transform var(--transition-fast);
+}
+
+.iconBtn:hover {
+  color: var(--color-text-primary);
+  transform: scale(1.06);
+}
+
+.profileBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  margin-left: var(--space-1);
+  border-radius: var(--radius-full);
+  background: var(--color-bg-press);
+  color: var(--color-text-primary);
+  transition: transform var(--transition-fast), background var(--transition-fast);
+}
+
+.profileBtn:hover {
+  transform: scale(1.06);
+  background: #333333;
+}
+
+.profileBtn svg {
+  width: 14px;
+  height: 14px;
+}

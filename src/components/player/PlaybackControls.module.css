@@ -1,0 +1,63 @@
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+}
+
+.large {
+  gap: var(--space-6);
+}
+
+.secondary {
+  color: var(--color-text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-full);
+  transition: color var(--transition-fast), transform var(--transition-fast);
+}
+
+.secondary:hover:not(:disabled) {
+  color: var(--color-text-primary);
+  transform: scale(1.06);
+}
+
+.secondary:disabled {
+  opacity: 0.4;
+  cursor: default;
+  transform: none;
+}
+
+.large .secondary {
+  width: 40px;
+  height: 40px;
+}
+
+.play {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  background: var(--color-text-primary);
+  color: var(--color-bg-base);
+  transition: transform var(--transition-fast);
+}
+
+.play:hover {
+  transform: scale(1.06);
+}
+
+.large .play {
+  width: 56px;
+  height: 56px;
+}
+
+.large .play svg {
+  width: 28px;
+  height: 28px;
+}

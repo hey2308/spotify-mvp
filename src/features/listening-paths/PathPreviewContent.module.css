@@ -1,0 +1,103 @@
+.preview {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding-top: var(--space-3);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.centered {
+  padding-top: 0;
+  border-top: none;
+}
+
+.trackList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.trackItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.trackMeta {
+  min-width: 0;
+}
+
+.trackTitle {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.trackArtist {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sampleLabel {
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text-subdued);
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.chooseBtn {
+  width: 100%;
+  min-height: var(--touch-target-min);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  color: var(--color-bg-base);
+  background: var(--color-text-primary);
+  transition: transform var(--transition-fast), opacity var(--transition-fast);
+}
+
+.chooseBtn:hover {
+  transform: scale(1.02);
+}
+
+.chooseBtn[data-path-type='stay-in-vibe'] {
+  background: var(--color-path-vibe);
+  color: #000;
+}
+
+.chooseBtn[data-path-type='discover-new'] {
+  background: var(--color-path-discover);
+}
+
+.chooseBtn[data-path-type='fit-moment'] {
+  background: var(--color-path-moment);
+  color: #000;
+}
+
+.seeMoreBtn {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  padding: var(--space-2) var(--space-1);
+  min-height: var(--touch-target-min);
+  align-self: flex-start;
+  transition: color var(--transition-fast);
+}
+
+.seeMoreBtn:hover {
+  color: var(--color-text-primary);
+}

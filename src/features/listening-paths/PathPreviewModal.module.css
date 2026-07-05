@@ -1,0 +1,191 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-6);
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(4px);
+  animation: fadeIn 200ms ease;
+}
+
+.dialog {
+  width: min(520px, 100%);
+  max-height: min(90vh, 640px);
+  overflow-y: auto;
+  padding: var(--space-6);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--color-bg-highlight);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.5);
+  animation: slideUp 250ms ease;
+}
+
+.dialog[data-path-type='stay-in-vibe'] {
+  border-color: rgba(30, 215, 96, 0.35);
+  background: linear-gradient(160deg, rgba(30, 215, 96, 0.12) 0%, var(--color-bg-highlight) 45%);
+}
+
+.dialog[data-path-type='discover-new'] {
+  border-color: rgba(168, 85, 247, 0.35);
+  background: linear-gradient(160deg, rgba(168, 85, 247, 0.12) 0%, var(--color-bg-highlight) 45%);
+}
+
+.dialog[data-path-type='fit-moment'] {
+  border-color: rgba(249, 115, 22, 0.35);
+  background: linear-gradient(160deg, rgba(249, 115, 22, 0.12) 0%, var(--color-bg-highlight) 45%);
+}
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+.headerMain {
+  display: flex;
+  gap: var(--space-4);
+  align-items: flex-start;
+}
+
+.title {
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+}
+
+.closeBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-full);
+  color: var(--color-text-secondary);
+  flex-shrink: 0;
+  transition: color var(--transition-fast), background var(--transition-fast);
+}
+
+.closeBtn:hover {
+  color: var(--color-text-primary);
+  background: var(--color-bg-press);
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-5);
+}
+
+.tag {
+  font-size: var(--font-size-xs);
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  background: rgba(0, 0, 0, 0.3);
+  color: var(--color-text-secondary);
+}
+
+.carousel {
+  display: flex;
+  gap: var(--space-3);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+
+.carouselItem {
+  flex: 0 0 100px;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.carouselTitle {
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.carouselArtist {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sampleLabel {
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text-subdued);
+  margin-bottom: var(--space-2);
+}
+
+.chooseBtn {
+  width: 100%;
+  min-height: var(--touch-target-min);
+  padding: var(--space-4);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-base);
+  font-weight: 700;
+  color: var(--color-bg-base);
+  background: var(--color-text-primary);
+  transition: transform var(--transition-fast);
+}
+
+.chooseBtn:hover {
+  transform: scale(1.02);
+}
+
+.chooseBtn[data-path-type='stay-in-vibe'] {
+  background: var(--color-path-vibe);
+  color: #000;
+}
+
+.chooseBtn[data-path-type='discover-new'] {
+  background: var(--color-path-discover);
+}
+
+.chooseBtn[data-path-type='fit-moment'] {
+  background: var(--color-path-moment);
+  color: #000;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .overlay,
+  .dialog {
+    animation: none;
+  }
+}

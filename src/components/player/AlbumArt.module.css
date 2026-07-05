@@ -1,0 +1,53 @@
+.art {
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+}
+
+.image {
+  object-fit: cover;
+  display: block;
+}
+
+.fallback {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+.sm {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-sm);
+}
+
+.md {
+  width: 48px;
+  height: 48px;
+}
+
+.lg {
+  width: 280px;
+  height: 280px;
+  border-radius: var(--radius-md);
+}
+
+.xl {
+  width: min(320px, 70vw);
+  height: min(320px, 70vw);
+  border-radius: var(--radius-md);
+}
+
+.lg .artLabel,
+.xl .artLabel {
+  display: none;
+}
+
+.fallback .artLabel {
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.85);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}

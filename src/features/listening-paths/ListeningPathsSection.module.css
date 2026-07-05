@@ -1,0 +1,240 @@
+.featureWrap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-2);
+}
+
+.newTag {
+  display: inline-block;
+  padding: 2px 7px;
+  font-size: 0.625rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  line-height: 1.35;
+  text-transform: uppercase;
+  color: #000000;
+  background: var(--color-accent);
+  border-radius: var(--radius-sm);
+  margin-left: var(--space-3);
+  box-shadow: 0 0 10px rgba(30, 215, 96, 0.35);
+}
+
+.highlightWrap {
+  position: relative;
+  width: 100%;
+  border-radius: var(--radius-lg);
+  isolation: isolate;
+}
+
+.highlightWrap::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 2px;
+  background: linear-gradient(
+    135deg,
+    #1ed760,
+    #1db954,
+    #14a347,
+    #4ade80,
+    #1ed760
+  );
+  background-size: 300% 300%;
+  animation: highlightBorder 5s ease infinite;
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.highlightWrap::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: calc(var(--radius-lg) + 2px);
+  background: transparent;
+  box-shadow:
+    0 0 16px rgba(30, 215, 96, 0.28),
+    0 0 28px rgba(29, 185, 84, 0.18),
+    0 0 40px rgba(20, 163, 71, 0.1);
+  animation: highlightGlow 3s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes highlightBorder {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes highlightGlow {
+  0%,
+  100% {
+    opacity: 0.65;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.section {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  background: var(--color-bg-highlight);
+  border-radius: calc(var(--radius-lg) - 2px);
+  margin: 2px;
+}
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.titleRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-2);
+}
+
+.title {
+  font-size: var(--font-size-md);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.beta {
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  color: var(--color-text-secondary);
+  letter-spacing: 0.04em;
+}
+
+.subtitle {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  margin-top: calc(-1 * var(--space-2));
+}
+
+.closeBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--touch-target-min);
+  height: var(--touch-target-min);
+  border-radius: var(--radius-full);
+  color: var(--color-text-subdued);
+  flex-shrink: 0;
+  transition: color var(--transition-fast), background var(--transition-fast);
+}
+
+.closeBtn:hover {
+  color: var(--color-text-primary);
+  background: var(--color-bg-press);
+}
+
+.dismiss {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  width: 100%;
+  min-height: var(--touch-target-min);
+  padding: var(--space-3) 0 0;
+  margin-top: var(--space-1);
+  border-top: 1px solid var(--color-bg-press);
+  text-align: left;
+  transition: color var(--transition-fast);
+}
+
+.dismiss:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.dismiss:hover .dismissTitle,
+.dismiss:hover .dismissCaption {
+  color: var(--color-text-primary);
+}
+
+.dismissCopy {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  flex: 1;
+  min-width: 0;
+}
+
+.dismissTitle {
+  font-size: var(--font-size-base);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  line-height: 1.3;
+}
+
+.dismissCaption {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.4;
+}
+
+.dismiss svg {
+  flex-shrink: 0;
+  color: var(--color-text-primary);
+}
+
+@media (max-width: 1023px) {
+  .featureWrap {
+    width: 100%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section {
+    padding: var(--space-3);
+  }
+
+  .title {
+    font-size: var(--font-size-sm);
+  }
+
+  .dismissTitle {
+    font-size: var(--font-size-sm);
+  }
+
+  .dismissCaption {
+    font-size: var(--font-size-xs);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .highlightWrap::before {
+    animation: none;
+    background-size: 100% 100%;
+  }
+
+  .highlightWrap::after {
+    animation: none;
+    opacity: 0.75;
+  }
+}

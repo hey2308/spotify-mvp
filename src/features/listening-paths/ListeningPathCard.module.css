@@ -1,0 +1,250 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  background: var(--color-bg-press);
+  overflow: hidden;
+  cursor: pointer;
+  transition:
+    background var(--transition-fast),
+    box-shadow var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.card:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.stack {
+  width: 100%;
+}
+
+.card[data-path-type='stay-in-vibe'] {
+  background: var(--color-path-vibe-muted);
+  border-color: rgba(30, 215, 96, 0.3);
+}
+
+.card[data-path-type='discover-new'] {
+  background: var(--color-path-discover-muted);
+  border-color: rgba(168, 85, 247, 0.3);
+}
+
+.card[data-path-type='fit-moment'] {
+  background: var(--color-path-moment-muted);
+  border-color: rgba(249, 115, 22, 0.3);
+}
+
+.card.expanded {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+.card.selected {
+  box-shadow: 0 0 0 2px var(--color-accent);
+}
+
+.card.dimmed {
+  opacity: 0.55;
+}
+
+.card.dimmed:hover,
+.card.dimmed:focus-within {
+  opacity: 0.75;
+}
+
+.collapsed {
+  display: flex;
+  gap: var(--space-3);
+  padding: var(--space-4);
+}
+
+.stack .collapsed {
+  flex-direction: row;
+  align-items: stretch;
+}
+
+.sidebar .collapsed {
+  flex-direction: column;
+  padding: var(--space-3);
+  gap: var(--space-2);
+}
+
+.content {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.sidebar .content {
+  gap: var(--space-2);
+}
+
+.header {
+  display: flex;
+  gap: var(--space-3);
+  align-items: flex-start;
+}
+
+.headerText {
+  min-width: 0;
+}
+
+.title {
+  font-size: var(--font-size-base);
+  font-weight: 700;
+  line-height: 1.25;
+  margin-bottom: var(--space-1);
+}
+
+.sidebar .title {
+  font-size: var(--font-size-sm);
+}
+
+.description {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.4;
+}
+
+.sidebar .description {
+  font-size: var(--font-size-xs);
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+}
+
+.tag {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-subdued);
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.nextUp {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.stack .nextUp {
+  width: 120px;
+  padding-left: var(--space-3);
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.sidebar .nextUp {
+  padding-top: var(--space-2);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.nextUpLabel {
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  color: var(--color-text-subdued);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.nextUpTrack {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.stack .nextUpTrack {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.nextUpMeta {
+  min-width: 0;
+}
+
+.nextUpTitle {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100px;
+}
+
+.stack .nextUpTitle {
+  max-width: 108px;
+}
+
+.sidebar .nextUpTitle {
+  max-width: 180px;
+}
+
+.nextUpArtist {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100px;
+}
+
+.sidebar .nextUpArtist {
+  max-width: 180px;
+}
+
+.playBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-full);
+  background: var(--color-text-primary);
+  color: var(--color-bg-base);
+  margin-top: var(--space-1);
+}
+
+.previewPanel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 250ms ease;
+  padding: 0 var(--space-4) 0;
+}
+
+.sidebar .previewPanel {
+  padding: 0 var(--space-3) 0;
+}
+
+.previewPanelOpen {
+  grid-template-rows: 1fr;
+  padding-bottom: var(--space-3);
+}
+
+.previewPanel > * {
+  overflow: hidden;
+}
+
+.reducedMotion .previewPanel {
+  transition: none;
+}
+
+.stack.expanded .collapsed {
+  flex-direction: column;
+}
+
+.stack.expanded .nextUp {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .previewPanel {
+    transition: none;
+  }
+}

@@ -1,0 +1,33 @@
+.shell {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--color-bg-elevated);
+}
+
+.scroll {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  min-height: 0;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: calc(var(--mobile-nav-height) + var(--space-10));
+}
+
+.queueSection {
+  padding: 0 var(--space-4) var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.library {
+  height: 100%;
+  min-height: min(100%, 100dvh - var(--mobile-nav-height));
+}
+
+@media (min-width: 1024px) {
+  .shell {
+    display: none;
+  }
+}
