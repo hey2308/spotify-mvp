@@ -37,6 +37,8 @@ interface DiscoveryDnaContextValue {
   toggleDebugPanel: () => void;
   simulateDnaFailure: boolean;
   setSimulateDnaFailure: (simulate: boolean) => void;
+  hoveredPathType: PathType | null;
+  setHoveredPathType: (type: PathType | null) => void;
 }
 
 const DiscoveryDnaContext = createContext<DiscoveryDnaContextValue | null>(null);
@@ -55,6 +57,7 @@ export function DiscoveryDnaProvider({
   const [signalOverrides, setSignalOverrides] = useState<SignalOverrides>({});
   const [debugPanelOpen, setDebugPanelOpen] = useState(false);
   const [simulateDnaFailure, setSimulateDnaFailure] = useState(false);
+  const [hoveredPathType, setHoveredPathType] = useState<PathType | null>(null);
   const [pathsStatus, setPathsStatus] = useState<PathsStatus>('loading');
   const [activeDna, setActiveDna] = useState<DiscoveryDnaResult | null>(null);
 
@@ -145,6 +148,8 @@ export function DiscoveryDnaProvider({
       toggleDebugPanel,
       simulateDnaFailure,
       setSimulateDnaFailure,
+      hoveredPathType,
+      setHoveredPathType,
     }),
     [
       pathsStatus,
@@ -156,6 +161,7 @@ export function DiscoveryDnaProvider({
       debugPanelOpen,
       toggleDebugPanel,
       simulateDnaFailure,
+      hoveredPathType,
     ],
   );
 

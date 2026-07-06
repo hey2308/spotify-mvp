@@ -28,6 +28,7 @@ export interface ContextSignals {
   deviceType: DeviceType;
   locationCategory: LocationCategory;
   usualActivity: string;
+  temperatureCelsius: number;
 }
 
 export interface BehaviourSignals {
@@ -46,8 +47,12 @@ export interface DiscoverySignals {
 
 export interface SessionContext {
   label: string;
+  /** Presenter confidence in inferred session context (0–100). */
+  contextConfidence: number;
   discoveryReadiness: number;
   preferredListeningIntent: ListeningIntent;
+  /** Human-readable intent for the debug panel. */
+  listeningIntentLabel: string;
   primarySignals: string[];
   mood: string;
   activity: string;

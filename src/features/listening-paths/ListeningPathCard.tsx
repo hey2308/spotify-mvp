@@ -4,6 +4,7 @@ import type { ListeningPath } from '../../types/listeningPath';
 import { AlbumArt } from '../../components/player/AlbumArt';
 import { usePrefersReducedMotion } from '../../hooks/usePrefersReducedMotion';
 import { useQueue } from './QueueContext';
+import { useDiscoveryDna } from './DiscoveryDnaContext';
 import { PathCenterPreview } from './PathCenterPreview';
 import { PathIcon } from './PathIcon';
 import { PathPreviewContent } from './PathPreviewContent';
@@ -52,6 +53,7 @@ export function ListeningPathCard({
   const isWeb = layout === 'sidebar';
   const reducedMotion = usePrefersReducedMotion();
   const { choosePath } = useQueue();
+  const { setHoveredPathType } = useDiscoveryDna();
 
   const cardRef = useRef<HTMLElement>(null);
   const hoverOpenTimerRef = useRef<number | null>(null);
@@ -85,13 +87,14 @@ export function ListeningPathCard({
     clearHoverOpenTimer();
     clearHoverCloseTimer();
     previewPanelHoveredRef.current = false;
+    setHoveredPathType(null);
     setIsCenterPreviewOpen((open) => {
       if (open) {
         suppressHoverUntilRef.current = Date.now() + REOPEN_COOLDOWN_MS;
       }
       return false;
     });
-  }, [clearHoverCloseTimer, clearHoverOpenTimer]);
+  }, [clearHoverCloseTimer, clearHoverOpenTimer, setHoveredPathType]);
 
   const scheduleCloseCenterPreview = useCallback(() => {
     clearHoverCloseTimer();
@@ -136,14 +139,19 @@ export function ListeningPathCard({
 
   const handleCardClick = useCallback(() => {
     if (isMobile) {
-      setIsExpanded((expanded) => !expanded);
+      setIsExpanded((expanded) => {
+        const next = !expanded;
+        setHoveredPathType(next ? path.type : null);
+        return next;
+      });
     }
-  }, [isMobile]);
+  }, [isMobile, path.type, setHoveredPathType]);
 
   const handleWebMouseEnter = useCallback(() => {
     if (!isWeb || isModalOpen) return;
     if (isScrollingRef.current || Date.now() < suppressHoverUntilRef.current) return;
 
+    setHoveredPathType(path.type);
     clearHoverCloseTimer();
     clearHoverOpenTimer();
 
@@ -151,13 +159,14 @@ export function ListeningPathCard({
       if (isScrollingRef.current || Date.now() < suppressHoverUntilRef.current) return;
       setIsCenterPreviewOpen(true);
     }, HOVER_OPEN_DELAY_MS);
-  }, [clearHoverCloseTimer, clearHoverOpenTimer, isModalOpen, isWeb]);
+  }, [clearHoverCloseTimer, clearHoverOpenTimer, isModalOpen, isWeb, path.type, setHoveredPathType]);
 
   const handleWebMouseLeave = useCallback(() => {
     if (!isWeb) return;
     clearHoverOpenTimer();
+    setHoveredPathType(null);
     scheduleCloseCenterPreview();
-  }, [clearHoverOpenTimer, isWeb, scheduleCloseCenterPreview]);
+  }, [clearHoverOpenTimer, isWeb, scheduleCloseCenterPreview, setHoveredPathType]);
 
   const handleWebCardClick = useCallback(() => {
     if (isWeb) {
