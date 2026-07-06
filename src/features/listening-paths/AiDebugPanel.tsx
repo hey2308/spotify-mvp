@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import type { PathType } from '../../types/track';
+import { PATH_DISPLAY_ORDER } from '../../types/track';
 import { useQueue } from './QueueContext';
 import { useDiscoveryDna } from './DiscoveryDnaContext';
 import styles from './AiDebugPanel.module.css';
@@ -68,6 +69,18 @@ const STRATEGIES: Record<
     accent: 'vibe' | 'discover' | 'moment';
   }
 > = {
+  'fit-moment': {
+    dot: '🟠',
+    title: 'Fit This Moment',
+    subtitle: 'Adapt to the current session',
+    description:
+      'Generate recommendations based on the inferred listening context rather than only historical preferences.',
+    familiarity: 4,
+    novelty: 3,
+    goal: 'Maximize contextual relevance.',
+    badge: 'Context Driven',
+    accent: 'moment',
+  },
   'stay-in-vibe': {
     dot: '🟢',
     title: 'Stay in the Vibe',
@@ -89,18 +102,6 @@ const STRATEGIES: Record<
     novelty: 5,
     goal: 'Maximize meaningful discovery while maintaining high adoption probability.',
     accent: 'discover',
-  },
-  'fit-moment': {
-    dot: '🟠',
-    title: 'Fit This Moment',
-    subtitle: 'Adapt to the current session',
-    description:
-      'Generate recommendations based on the inferred listening context rather than only historical preferences.',
-    familiarity: 4,
-    novelty: 3,
-    goal: 'Maximize contextual relevance.',
-    badge: 'Context Driven',
-    accent: 'moment',
   },
 };
 
@@ -261,7 +262,7 @@ export function AiDebugPanel() {
             Generated Listening Strategies
           </h3>
           <div className={styles.strategyList}>
-            {(Object.keys(STRATEGIES) as PathType[]).map((type) => (
+            {PATH_DISPLAY_ORDER.map((type) => (
               <StrategyCard
                 key={type}
                 type={type}

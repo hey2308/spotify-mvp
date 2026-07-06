@@ -146,9 +146,9 @@ export function generateListeningPaths(
   const momentTrackList = momentTracks(catalog, sessionContext.label);
 
   return [
+    buildPath('fit-moment', momentTrackList, sessionContext, signals),
     buildPath('stay-in-vibe', stayTracks, sessionContext, signals),
     buildPath('discover-new', discoverTrackList, sessionContext, signals),
-    buildPath('fit-moment', momentTrackList, sessionContext, signals),
   ];
 }
 

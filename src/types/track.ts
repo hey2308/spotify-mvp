@@ -12,3 +12,10 @@ export interface Track {
 }
 
 export type PathType = 'stay-in-vibe' | 'discover-new' | 'fit-moment';
+
+/** Display order for listening path cards (queue UI + debug panel). */
+export const PATH_DISPLAY_ORDER: readonly PathType[] = [
+  'fit-moment',
+  'stay-in-vibe',
+  'discover-new',
+];
